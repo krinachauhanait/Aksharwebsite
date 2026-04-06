@@ -50,33 +50,33 @@
 
     <div class="bg-white shadow-2xl rounded-3xl p-10">
 
-        <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <form id="quoteForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
             <!-- Name -->
             <div>
                 <label class="block mb-2 font-medium">Full Name</label>
-                <input type="text" placeholder="Enter your name"
+                <input type="text"  name="name" placeholder="Enter your name"
                     class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#001F3F]">
             </div>
 
             <!-- Phone -->
             <div>
                 <label class="block mb-2 font-medium">Phone Number</label>
-                <input type="tel" placeholder="Enter your phone"
+                <input type="tel"  name="phone" placeholder="Enter your phone"
                     class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#001F3F]">
             </div>
 
             <!-- Email -->
             <div>
                 <label class="block mb-2 font-medium">Email Address</label>
-                <input type="email" placeholder="Enter your email"
+                <input type="email"  name="email" placeholder="Enter your email"
                     class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#001F3F]">
             </div>
 
             <!-- Location -->
             <div>
                 <label class="block mb-2 font-medium">Location</label>
-                <input type="text" placeholder="City / Area"
+                <input type="text"  name="location" placeholder="City / Area"
                     class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#001F3F]">
             </div>
 
@@ -87,27 +87,27 @@
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
 
                     <label class="flex items-center gap-2">
-                        <input type="checkbox"> CCTV Surveillance
+                        <input type="checkbox" name="services" value="CCTV Surveillance"> CCTV Surveillance
                     </label>
 
                     <label class="flex items-center gap-2">
-                        <input type="checkbox"> Boom Barrier
+                        <input type="checkbox" name="services" value="Boom Barrier"> Boom Barrier
                     </label>
 
                     <label class="flex items-center gap-2">
-                        <input type="checkbox"> Gate Automation
+                        <input type="checkbox" name="services" value="Gate Automation"> Gate Automation
                     </label>
 
                     <label class="flex items-center gap-2">
-                        <input type="checkbox"> Networking Solutions
+                        <input type="checkbox" name="services" value="Networking Solutions"> Networking Solutions
                     </label>
 
                     <label class="flex items-center gap-2">
-                        <input type="checkbox"> Digital Door Locks
+                        <input type="checkbox" name="services" value="Digital Door Locks"> Digital Door Locks
                     </label>
 
                     <label class="flex items-center gap-2">
-                        <input type="checkbox"> Fire & Security Alarms
+                        <input type="checkbox" name="services" value="Fire & Security Alarms"> Fire & Security Alarms
                     </label>
 
                 </div>
@@ -116,7 +116,7 @@
             <!-- Message -->
             <div class="md:col-span-2">
                 <label class="block mb-2 font-medium">Project Details</label>
-                <textarea rows="5" placeholder="Describe your requirement..."
+                <textarea rows="5" name = "message" placeholder="Describe your requirement..."
                     class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#001F3F]"></textarea>
             </div>
 
@@ -145,5 +145,49 @@
     <p class="text-gray-400">© 2026 Akshar Elec. All rights reserved.</p>
 </footer>
 
+
+<script>
+document.getElementById("quoteForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const form = e.target;
+
+    const services = Array.from(form.querySelectorAll('input[name="services"]:checked'))
+        .map(el => el.value)
+        .join(", ");
+
+    const data = {
+        name: form.name.value,
+        phone: form.phone.value,
+        email: form.email.value,
+        location: form.location.value,
+        services: services,
+        message: form.message.value
+    };
+
+    try {
+        const response = await fetch("http://localhost:5000/send", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            alert("✅ Request sent successfully!");
+            form.reset();
+        } else {
+            alert("❌ Failed to send request.");
+        }
+
+    } catch (error) {
+        console.error(error);
+        alert("❌ Error connecting to server.");
+    }
+});
+</script>
 </body>
 </html>
