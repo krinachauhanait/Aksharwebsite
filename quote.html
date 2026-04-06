@@ -208,6 +208,7 @@
   </div>
 </footer>
 <script>
+// quote.html <script> — full updated version
 document.getElementById("quoteForm").addEventListener("submit", async function(e) {
     e.preventDefault();
 
@@ -218,31 +219,29 @@ document.getElementById("quoteForm").addEventListener("submit", async function(e
         phone: formData.get("phone"),
         email: formData.get("email"),
         location: formData.get("location"),
-        services: formData.getAll("services[]").join(", "),
+        services: formData.getAll("services[]"),
         message: formData.get("message")
     };
 
-    console.log("Sending:", data); // 🔥 DEBUG
-
     try {
-        const res = await fetch("http://localhost:5000/send-quotation", {
+        const res = await fetch("/send-quotation", {          // ✅ CHANGED: removed localhost
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
         });
 
-        const text = await res.text();
+        const result = await res.json();                      // ✅ CHANGED: parse as JSON
 
-        console.log("Response:", text); // 🔥 DEBUG
-
-        alert("✅ Submitted!");
-        this.reset();
+        if (result.success) {
+            alert("✅ Quotation submitted successfully!");
+            document.getElementById("quoteForm").reset();
+        } else {
+            alert("❌ Failed to send. Please try again.");
+        }
 
     } catch (error) {
-        console.error("ERROR:", error);
-        alert("❌ Failed");
+        console.error(error);
+        alert("❌ Failed to send email");
     }
 });
 </script>
