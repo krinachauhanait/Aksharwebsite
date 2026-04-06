@@ -218,12 +218,14 @@ document.getElementById("quoteForm").addEventListener("submit", async function(e
         phone: formData.get("phone"),
         email: formData.get("email"),
         location: formData.get("location"),
-        services: formData.getAll("services[]"), // send as array
+        services: formData.getAll("services[]").join(", "),
         message: formData.get("message")
     };
 
+    console.log("Sending:", data); // 🔥 DEBUG
+
     try {
-        const res = await fetch("http://localhost:5000/send-quotation", {  // ✅ FIXED ROUTE
+        const res = await fetch("http://localhost:5000/send-quotation", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -231,14 +233,16 @@ document.getElementById("quoteForm").addEventListener("submit", async function(e
             body: JSON.stringify(data)
         });
 
-        const text = await res.text(); // backend sends HTML
+        const text = await res.text();
 
-        alert("✅ Quotation submitted successfully!");
-        document.getElementById("quoteForm").reset();
+        console.log("Response:", text); // 🔥 DEBUG
+
+        alert("✅ Submitted!");
+        this.reset();
 
     } catch (error) {
-        console.error(error);
-        alert("❌ Failed to send email");
+        console.error("ERROR:", error);
+        alert("❌ Failed");
     }
 });
 </script>
