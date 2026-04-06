@@ -1,89 +1,247 @@
-require("dotenv").config();
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Quotation - Akshar Electrotekniks</title>
 
-const express = require("express");
-const nodemailer = require("nodemailer");
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-const app = express();
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-// Middleware
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+    <style>
+        :root {
+            --navy: #001F3F;
+        }
+    </style>
+</head>
 
-// Serve frontend
-app.use(express.static("public"));
+<body class="bg-gray-100 font-sans">
 
-// ✅ Create transporter ONCE (not inside route)
-const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    }
-});
+<!-- NAVBAR -->
+<nav class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
-// ✅ Verify connection (DEBUGGING)
-transporter.verify((error, success) => {
-    if (error) {
-        console.log("❌ Email config error:", error);
-    } else {
-        console.log("✅ Email server is ready");
-    }
-});
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+            <img src="logo.png" class="h-12">
+            <span class="text-2xl font-bold text-[#001F3F]">
+                Akshar Electrotekniks
+            </span>
+        </div>
 
-// ROUTE: FORM SUBMIT
-app.post("/send-quotation", async (req, res) => {
+        <!-- Back Button -->
+        <a href="index.html" class="text-[#001F3F] font-medium hover:underline">
+            ← Back to Home
+        </a>
+    </div>
+</nav>
 
-    console.log("📩 Form Data:", req.body); // DEBUG
+<!-- HERO -->
+<div class="bg-[#001F3F] text-white py-16 text-center">
+    <h1 class="text-4xl font-bold mb-4">Get a Quotation</h1>
+    <p class="text-gray-200 text-lg">
+        Tell us your requirements and our experts will contact you shortly
+    </p>
+</div>
 
-    const { name, phone, email, location, message } = req.body;
+<!-- FORM SECTION -->
+<div class="max-w-5xl mx-auto px-6 py-16">
 
-    // ✅ Fix services handling (array issue)
-    let services = req.body["services[]"] || req.body.services;
+    <div class="bg-white shadow-2xl rounded-3xl p-10">
 
-    if (Array.isArray(services)) {
-        services = services.join(", ");
-    }
+        <!-- IMPORTANT: connected to backend -->
+        <form id="quoteForm">
+
+            <!-- Name -->
+            <div>
+                <label class="block mb-2 font-medium">
+                    Full Name <span class="text-red-500">*</span>
+                </label>
+                <input type="text" name="name" required
+                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#001F3F]">
+            </div>
+
+            <!-- Phone -->
+            <div>
+                <label class="block mb-2 font-medium">
+                    Phone Number <span class="text-red-500">*</span>
+                </label>
+                <input type="tel" name="phone" required
+                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#001F3F]">
+            </div>
+
+            <!-- Email -->
+            <div>
+                <label class="block mb-2 font-medium">
+                    Email Address <span class="text-red-500">*</span>
+                </label>
+                <input type="email" name="email" required
+                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#001F3F]">
+            </div>
+
+            <!-- Location -->
+            <div>
+                <label class="block mb-2 font-medium">Location</label>
+                <input type="text" name="location"
+                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#001F3F]">
+            </div>
+
+            <!-- Services -->
+            <div class="md:col-span-2">
+                <label class="block mb-3 font-medium">Select Services</label>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
+
+                    <label class="flex items-center gap-2">
+                        <input type="checkbox" name="services[]" value="CCTV Surveillance">
+                        CCTV Surveillance
+                    </label>
+
+                    <label class="flex items-center gap-2">
+                        <input type="checkbox" name="services[]" value="Boom Barrier">
+                        Boom Barrier
+                    </label>
+
+                    <label class="flex items-center gap-2">
+                        <input type="checkbox" name="services[]" value="Gate Automation">
+                        Gate Automation
+                    </label>
+
+                    <label class="flex items-center gap-2">
+                        <input type="checkbox" name="services[]" value="Networking Solutions">
+                        Networking Solutions
+                    </label>
+
+                    <label class="flex items-center gap-2">
+                        <input type="checkbox" name="services[]" value="Digital Door Locks">
+                        Digital Door Locks
+                    </label>
+
+                    <label class="flex items-center gap-2">
+                        <input type="checkbox" name="services[]" value="Fire & Security Alarms">
+                        Fire & Security Alarms
+                    </label>
+
+                </div>
+            </div>
+
+            <!-- Message -->
+            <div class="md:col-span-2">
+                <label class="block mb-2 font-medium">Project Details</label>
+                <textarea rows="5" name="message"
+                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#001F3F]"></textarea>
+            </div>
+
+            <!-- Submit -->
+            <div class="md:col-span-2 text-center mt-6">
+                <button type="submit"
+                    class="bg-[#001F3F] text-white px-12 py-4 rounded-2xl text-lg font-semibold hover:bg-[#002E5F] transition">
+                    Submit Request
+                    <i class="fa-solid fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+  <!-- FOOTER -->
+<footer id="contact" class="bg-zinc-900 text-white py-16">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row md:justify-between md:items-start gap-12 text-center md:text-left">
+
+    <!-- Logo Section -->
+   <div class="flex-1">
+      <div class="flex items-center justify-center md:justify-start gap-3 mb-4">
+        <img src="logo.png"
+             alt="Akshar Elec Logo" 
+             class="h-14 w-auto bg-white p-1 rounded-lg">
+        <span class="text-3xl font-bold">Akshar Elektrotekniks</span>
+      </div>
+      <p class="text-gray-400 text-sm">
+        Innovative solutions for smart homes and intelligent automation systems.
+      </p>
+    </div>
+
+    <!-- Address Section -->
+    <div class="flex-1">
+      <div class="uppercase text-xs tracking-widest mb-4 text-gray-500">Our Address</div>
+      <p class="text-sm text-gray-400 space-y-2">
+        Akshar Elektrotekniks<br>
+        501, Maruti Enclave, Beside Live Bakery,<br>
+        Near Indira Circle, Rajkot<br>
+        PIN - 360005
+      </p>
+    </div>
+
+    <!-- Support Section -->
+    <div class="flex-1">
+      <div class="uppercase text-xs tracking-widest mb-4 text-gray-500">Support</div>
+      <ul class="space-y-3 text-sm">
+        <li><a href="#" class="hover:text-gray-300">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- Social Icons Section -->
+    <div class="flex-1 flex flex-col items-start">
+      <div class="uppercase text-xs tracking-widest mb-4 text-gray-500">Connect</div>
+      
+      <!-- Social Icons -->
+      <div class="flex gap-6 text-2xl mb-4">
+        <a href="https://www.facebook.com/yourusername" target="_blank" class="hover:text-blue-400">
+          <i class="fa-brands fa-facebook cursor-pointer"></i>
+        </a>
+        <a href="https://www.instagram.com/aksharelektrotekniks?igsh=cXp1Z3l2b3Exbjls" target="_blank" class="hover:text-pink-400">
+          <i class="fa-brands fa-instagram cursor-pointer"></i>
+        </a>
+      </div>
+
+      <!-- Copyright -->
+      <div class="text-xs text-gray-400 mt-auto">
+        © 2026 Akshar Elektrotekniks. All rights reserved.
+      </div>
+    </div>
+
+  </div>
+</footer>
+<script>
+document.getElementById("quoteForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+
+    const data = {
+        name: formData.get("name"),
+        phone: formData.get("phone"),
+        email: formData.get("email"),
+        location: formData.get("location"),
+        services: formData.getAll("services[]"), // send as array
+        message: formData.get("message")
+    };
 
     try {
-        await transporter.sendMail({
-            from: `"Akshar Elektrotekniks" <${process.env.EMAIL_USER}>`,
-            to: process.env.EMAIL_USER,
-            replyTo: email, // ✅ so you can reply directly
-            subject: "New Quotation Request",
-            html: `
-                <h2>New Quotation Request</h2>
-
-                <p><strong>Name:</strong> ${name || "N/A"}</p>
-                <p><strong>Phone:</strong> ${phone || "N/A"}</p>
-                <p><strong>Email:</strong> ${email || "N/A"}</p>
-                <p><strong>Location:</strong> ${location || "N/A"}</p>
-
-                <p><strong>Services:</strong> ${services || "N/A"}</p>
-
-                <p><strong>Message:</strong> ${message || "N/A"}</p>
-            `
+        const res = await fetch("http://localhost:3000/send-quotation", {  // ✅ FIXED ROUTE
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
         });
 
-        res.send(`
-            <script>
-                alert("Quotation submitted successfully!");
-                window.location.href = "/quote.html";
-            </script>
-        `);
+        const text = await res.text(); // backend sends HTML
+
+        alert("✅ Quotation submitted successfully!");
+        document.getElementById("quoteForm").reset();
 
     } catch (error) {
-        console.error("❌ Mail Error:", error);
-
-        res.send(`
-            <script>
-                alert("Error sending quotation!");
-                window.location.href = "/quote.html";
-            </script>
-        `);
+        console.error(error);
+        alert("❌ Failed to send email");
     }
 });
+</script>
 
-// START SERVER
-app.listen(3000, () => {
-    console.log("🚀 Server running on http://localhost:3000");
-});
+</body>
+</html>
