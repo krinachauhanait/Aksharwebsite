@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Networking Solutions | Akshar Elektrotekniks</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<style>
+:root { --navy:#001F3F; }
+
+body { font-family: 'Inter', sans-serif; }
+
+/* Hover Animations */
+.hover-card {
+    transition: all 0.4s ease;
+}
+.hover-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 40px rgba(0,0,0,0.2);
+}
+
+/* Icon animation */
+.icon-animate i {
+    transition: all 0.4s ease;
+}
+.icon-animate:hover i {
+    transform: rotate(10deg) scale(1.2);
+    color: #001F3F;
+}
+
+/* Button hover */
+.btn-hover:hover {
+    transform: scale(1.05);
+}
+
+/* Hero */
+.hero {
+    background: linear-gradient(rgba(0,31,63,0.7), rgba(0,31,63,0.8)), url('networking.png');
+    background-size: cover;
+    background-position: center;
+}
+</style>
+
+</head>
+
+<body class="bg-white text-gray-800">
+
+<!-- HEADER WITH NAV -->
+<header class="bg-[#001F3F] text-white shadow-lg sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between py-4">
+
+    <!-- LOGO -->
+    <div class="flex items-center gap-3">
+        <img src="logo.png" class="h-12">
+        <div>
+            <h1 class="text-xl font-bold">Akshar Elektrotekniks</h1>
+        </div>
+    </div>
+
+    <!-- NAV MENU -->
+    <nav class="flex gap-6 mt-4 md:mt-0 text-sm md:text-base font-medium">
+        <a href="index.html" class="hover:text-gray-300">Home</a>
+        <a href="index.html#about" class="hover:text-gray-300">About Us</a>
+        <a href="index.html#solutions" class="hover:text-gray-300">Solutions</a>
+        <a href="index.html#contact" class="hover:text-gray-300">Contact</a>
+    </nav>
+
+</div>
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero h-[70vh] flex items-center">
+<div class="max-w-7xl mx-auto px-6 text-white">
+    <h1 class="text-5xl md:text-6xl font-bold mb-6">
+        Structured Networking Solutions
+    </h1>
+    <p class="text-lg md:text-xl text-gray-300 max-w-2xl">
+        Reliable, high-speed, and scalable networking infrastructure to power seamless communication and data transfer for your business.
+    </p>
+</div>
+</section>
+
+<!-- MAIN CONTENT -->
+<section class="py-16">
+<div class="max-w-6xl mx-auto px-6">
+
+    <!-- INTRO -->
+    <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold text-[#001F3F] mb-4">
+            Why Choose Structured Networking?
+        </h2>
+        <p class="text-gray-600 max-w-3xl mx-auto">
+            Our networking solutions ensure stable connectivity, faster data transmission, and a secure infrastructure tailored for modern businesses and smart environments.
+        </p>
+    </div>
+
+    <!-- FEATURES -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <div class="hover-card bg-white p-6 rounded-2xl text-center icon-animate">
+            <i class="fa-solid fa-network-wired text-4xl mb-4 text-[#001F3F]"></i>
+            <h3 class="font-bold text-xl mb-2">High-Speed Connectivity</h3>
+            <p>Fast and reliable network performance for uninterrupted operations.</p>
+        </div>
+
+        <div class="hover-card bg-white p-6 rounded-2xl text-center icon-animate">
+            <i class="fa-solid fa-server text-4xl mb-4 text-[#001F3F]"></i>
+            <h3 class="font-bold text-xl mb-2">Structured Cabling</h3>
+            <p>Organized and efficient cabling systems for better performance and scalability.</p>
+        </div>
+
+        <div class="hover-card bg-white p-6 rounded-2xl text-center icon-animate">
+            <i class="fa-solid fa-shield-halved text-4xl mb-4 text-[#001F3F]"></i>
+            <h3 class="font-bold text-xl mb-2">Secure Network</h3>
+            <p>Advanced security measures to protect your data and network infrastructure.</p>
+        </div>
+
+    </div>
+
+    <!-- BENEFITS -->
+    <div class="mt-16">
+        <h2 class="text-3xl font-bold text-[#001F3F] mb-6 text-center">
+            Benefits of Our Networking Systems
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+
+            <div class="hover-card bg-gray-50 p-6 rounded-xl">
+                ✔ High-speed data transfer  
+                <br>✔ Reliable connectivity across devices  
+                <br>✔ Centralized network management  
+            </div>
+
+            <div class="hover-card bg-gray-50 p-6 rounded-xl">
+                ✔ Scalable infrastructure  
+                <br>✔ Reduced downtime  
+                <br>✔ Future-ready smart networking  
+            </div>
+
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-16">
+        <a href="#" class="bg-[#001F3F] text-white px-10 py-4 rounded-2xl text-lg font-semibold btn-hover inline-block">
+            Get Networking Consultation
+        </a>
+    </div>
+
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-zinc-900 text-white py-12">
+<div class="max-w-7xl mx-auto px-6 text-center md:text-left flex flex-col md:flex-row justify-between gap-10">
+
+    <div>
+        <h3 class="text-xl font-bold mb-2">Akshar Elektrotekniks</h3>
+        <p class="text-gray-400 text-sm">Smart Automation & Security Solutions</p>
+    </div>
+
+    <div>
+        <p class="text-gray-400 text-sm">
+            Rajkot, Gujarat<br>
+            +91 86907 00007<br>
+            info@aksharelektrotekniks.com
+        </p>
+    </div>
+
+    <div class="flex justify-center md:justify-start gap-6 text-xl">
+        <i class="fa-brands fa-facebook hover:text-blue-400 cursor-pointer"></i>
+        <i class="fa-brands fa-instagram hover:text-pink-400 cursor-pointer"></i>
+        <i class="fa-brands fa-youtube hover:text-red-500 cursor-pointer"></i>
+    </div>
+
+</div>
+</footer>
+
+</body>
+</html>

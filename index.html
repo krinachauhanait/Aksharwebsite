@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akshar Elektrotekniks</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <meta name="description" content="Akshar Elektrotekniks provides CCTV, security systems, and automation solutions in India.">
+
+    <meta name="keywords" content="CCTV, security, automation, smart home, surveillance">
+
+    <meta name="author" content="Akshar Elektrotekniks">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@700&amp;display=swap');
+        
+        :root {
+            --navy: #001F3F;
+        }
+        
+        .tail-container {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        
+        .hero-bg { background: linear-gradient(rgba(0, 31, 63, 0.45), rgba(0, 31, 63, 0.55)), url("hero.png");
+                   background-size: cover;
+                   background-position: center;
+                   background-repeat: no-repeat;
+}
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #001F3F;
+        }
+        
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        }
+        
+        .orange-to-navy {
+            background-color: #001F3F;
+        }
+        html {
+            scroll-behavior: smooth;
+       }
+       /* ICON HOVER EFFECT */
+.icon-hover i {
+    transition: all 0.4s ease;
+}
+
+/* Phone hover */
+.icon-hover.phone:hover i {
+    color: #22c55e; /* green */
+    transform: rotate(15deg) scale(1.2);
+}
+
+/* Mail hover */
+.icon-hover.mail:hover i {
+    color: #f97316; /* orange */
+    transform: rotate(-15deg) scale(1.2);
+}
+
+    </style>
+
+<link rel="icon" type="image/png" href="logo.png">
+</head>
+
+
+
+<body class="tail-container text-gray-800 overflow-x-hidden">
+    
+  <!-- TOP CONTACT BAR (THEME MATCHED - NAVY) -->
+<div class="bg-[#001F3F] text-white py-3">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+
+        <!-- LEFT -->
+        <div class="flex items-center gap-3">
+            <img src="logo.png" class="h-12 md:h-14 w-auto object-contain">
+
+            <div class="leading-tight">
+                <div class="text-lg md:text-xl font-bold">Akshar Elektrotekniks</div>
+                
+            </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="flex flex-col sm:flex-row gap-4 sm:gap-8 text-xs sm:text-sm text-center sm:text-left">
+            
+            <a href="tel:+9186907000007" 
+   class="icon-hover phone flex items-center justify-center sm:justify-start gap-2 cursor-pointer">
+
+   <i class="fa-solid fa-phone text-white text-lg"></i>
+   <span>+91 86907 00007</span>
+
+</a>
+
+            <div class="icon-hover mail flex items-center justify-center sm:justify-start gap-2">
+              <i class="fa-solid fa-envelope text-white text-lg"></i>
+    
+              <a href="mailto:info@aksharelektrotekniks.com" 
+                     class="hover:underline">
+                info@aksharelektrotekniks.com
+             </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+            
+    <!-- MAIN NAVIGATION (PERFECT ALIGNMENT) -->
+<nav class="bg-white border-b shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+        
+        <div class="flex flex-wrap items-center justify-center md:justify-between py-3 md:h-16">
+
+            <!-- MENU -->
+            <div class="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-10 text-sm sm:text-base font-medium">
+
+                <a href="#home" class="nav-link text-[#001F3F]">Home</a>
+                <a href="#about" class="nav-link">About Us</a>
+                <a href="#solutions" class="nav-link">Solutions</a>
+                <a href="#contact" class="nav-link">Contact</a>
+
+            </div>
+
+            <!-- BUTTON -->
+            <div class="w-full md:w-auto flex justify-center md:justify-end mt-3 md:mt-0">
+                <a href="quote.html" 
+                   class="orange-to-navy text-white px-6 md:px-8 py-2 md:py-3 rounded-xl font-semibold text-sm md:text-base shadow-md">
+                    Request a Quote
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section id="home" class="hero-bg min-h-screen flex items-center relative px-4">
+    <div class="relative z-10 text-white px-4 sm:px-6 md:pl-16">
+        <div class="max-w-2xl">
+           <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight font-bold mb-6">
+                Smart Security & Automation Solutions
+            </h1>
+           <h2 class="text-xl sm:text-2xl md:text-3xl font-semibold mb-4">
+                for your home & business
+            </h2>
+            <h3 class="text-sm sm:text-base md:text-lg mb-6 text-gray-300">
+                Protect your home, office, and commercial spaces <br> with our advanced security and automation services
+            </h3>
+           <p class="text-sm sm:text-base md:text-lg mb-8 text-gray-200">
+                Experience the future of smart living with seamless home automation
+            </p>
+        
+        </div>
+    </div>
+    
+    
+    <!-- Scroll indicator -->
+  <div onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})"
+     class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-white/70 cursor-pointer">
+      <div class="text-xs tracking-widest mb-2">SCROLL</div>
+    <i class="fa-solid fa-chevron-down animate-bounce"></i>
+    </div>
+</section>
+
+
+    <!-- WELCOME SECTION -->
+   <section id="about" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            <!-- Left Text -->
+            <div>
+                <h2 class="text-5xl font-bold leading-tight text-[#001F3F]">
+                    About Akshar Elektrotekniks
+                </h2>
+                <div class="mt-8 text-lg leading-relaxed text-gray-700 space-y-4">
+                    <p>
+                        Established in 2022, we are a forward-thinking system integration company delivering cutting-edge security and automation solutions.
+                    </p>
+
+                    <p>
+                        Our core expertise spans CCTV surveillance systems, advanced access control, boom barriers, gate automation, and fully integrated building management systems.
+                    </p>
+
+                    <p>
+                        We specialize in designing and implementing intelligent, scalable solutions tailored to residential, commercial, and industrial environments.
+                    </p>
+
+                    <p>
+                        With a strong commitment to quality, innovation, and customer satisfaction, we ensure seamless system integration, superior performance, and long-term reliability.
+                    </p>
+
+                    <p>
+                        Driven by technology and guided by excellence, we create secure, efficient, and future-ready infrastructures for our clients.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Right Visual -->
+            <div class="relative">
+                <div class="absolute -left-6 -top-6 w-72 h-72 bg-[#001F3F]/10 rounded-full"></div>
+                <div class="relative bg-white shadow-2xl rounded-3xl overflow-hidden">
+
+                    <!-- Main image -->
+                       <img src="home_automation.png" 
+                            alt="Home Automation Setup" 
+                            class="w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- LEADING HEADER + ALL SOLUTIONS -->
+   <section id="solutions" class="bg-zinc-100 py-16">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+          <h2 class="text-4xl md:text-5xl font-bold text-[#001F3F] leading-tight">
+    Building Secure, Smart, and Future-Ready Environments
+</h2>
+
+<p class="mt-6 text-lg text-gray-600 max-w-3xl mx-auto">
+    Delivering advanced CCTV surveillance, access control, and automation solutions 
+    designed for modern homes, businesses, and industries.
+</p>
+            
+            <div class="mt-12 flex flex-col items-center text-[#001F3F] cursor-pointer"
+              onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+
+                 <div class="text-sm tracking-widest mb-2">SCROLL</div>
+                 <i class="fa-solid fa-chevron-down text-2xl animate-bounce"></i>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- OUR BRANDS SECTION -->
+    <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-5xl font-bold text-[#001F3F]">Akshar Elektrotekniks</h2>
+            <p class="mt-6 max-w-2xl mx-auto text-lg text-gray-600">
+                Akshar Elektrotekniks collaborates with trusted global brands to deliver cutting-edge home automation solutions. 
+                Our partnerships ensure smart, secure, and energy-efficient living for every home.
+            </p>
+        </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Brand 1 -->
+                <div class="group bg-white border border-gray-200 rounded-3xl overflow-hidden hover:border-[#001F3F] transition">
+    
+                    <img src="boom-barrier.png" 
+                         alt="Boom Barrier System" 
+                         class="w-full h-64 object-cover group-hover:scale-105 transition duration-500">
+    
+                        <div class="p-6 text-center">
+                              <div class="font-semibold text-lg">Boom Barrier</div>
+                        </div>
+
+                </div>
+                
+                <!-- Brand 2 -->
+                <div class="group bg-white border border-gray-200 rounded-3xl overflow-hidden hover:border-[#001F3F] transition duration-300">
+    
+                <img src="digital-lockers.png" 
+                     alt="Smart Door Locks" 
+                     class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
+
+                      <div class="p-6 text-center">
+                          <div class="font-semibold text-lg">Digital Locks</div>
+                     </div>
+
+                </div>
+                
+                <!-- Brand 3 -->
+                <div class="group bg-white border border-gray-200 rounded-3xl overflow-hidden hover:border-[#001F3F] transition">
+    
+                 <img src="networking.png" 
+                      alt="Networking Solutions" 
+                      class="w-full h-64 object-cover group-hover:scale-105 transition duration-500">
+
+                         <div class="p-6 text-center">
+                              <div class="font-semibold text-lg">Networking Solutions</div>
+                         </div>
+                 </div>
+                
+                <!-- Brand 4 -->
+               <div class="group bg-white border border-gray-200 rounded-3xl overflow-hidden hover:border-[#001F3F] transition">
+    
+                  <img src="alarms.png" 
+                       alt="Fire & Security Alarms" 
+                       class="w-full h-64 object-cover group-hover:scale-105 transition duration-500">
+    
+                          <div class="p-6 text-center">
+                              <div class="font-semibold text-lg">Fire & Security Alarms</div>
+                            </div>
+
+                  </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+<section id="services" class="py-24 bg-zinc-950 text-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- CCTV Surveillance -->
+           <a href="cctv.html" class="block"> 
+            <div class="service-card scan-card bg-white text-gray-900 p-10 rounded-3xl cursor-pointer"> 
+                <div class="w-16 h-16 bg-[#001F3F] text-white rounded-2xl flex items-center justify-center mb-8"> 
+                    <i class="fa-solid fa-video text-3xl"></i> 
+                </div> 
+                <h3 class="text-3xl font-bold mb-6">CCTV Surveillance</h3>
+                 <p class="leading-relaxed"> Monitor and protect your property with our advanced CCTV surveillance systems. 
+                    We provide high-definition cameras, remote monitoring, and intelligent recording solutions to ensure 
+                    24×7 security for residential, commercial, and industrial spaces. 
+                </p> 
+            </div>
+          </a>
+            
+            <!-- Gate Automation (Highlighted) -->
+            <a href="gate-automation.html" class="block">
+            <div class="service-card orange-to-navy p-10 rounded-3xl text-white cursor-pointer">
+                <div class="w-16 h-16 bg-white text-[#001F3F] rounded-2xl flex items-center justify-center mb-8">
+                    <i class="fa-solid fa-door-open text-3xl"></i>
+                </div>
+                <h3 class="text-3xl font-bold mb-6">Gate Automation</h3>
+                <p class="leading-relaxed text-white/90">
+                    Experience convenience and security with our automated gate solutions. 
+                    Control access effortlessly with remote, sensor-based, and smart entry systems 
+                    designed for smooth operation, safety, and long-term reliability.
+                </p>
+            </div>
+            </a>
+            
+            <!-- Security Systems -->
+            <a href="security-systems.html" class="block">
+            <div class="service-card bg-white text-gray-900 p-10 rounded-3xl cursor-pointer">
+                <div class="w-16 h-16 bg-[#001F3F] text-white rounded-2xl flex items-center justify-center mb-8">
+                    <i class="fa-solid fa-shield-halved text-3xl"></i>
+                </div>
+                <h3 class="text-3xl font-bold mb-6">Security Systems</h3>
+                <p class="leading-relaxed">
+                    Secure your premises with integrated security solutions including digital door locks, 
+                    fire alarms, and intrusion detection systems. Our smart security systems are designed 
+                    to provide real-time alerts, enhanced protection, and complete peace of mind.
+                </p>
+            </div>
+            </a>
+
+            <!-- Data Management & Server Solutions (Highlighted) -->
+            <a href="data-management.html" class="block">
+            <div class="service-card orange-to-navy p-10 rounded-3xl text-white cursor-pointer">
+                <div class="w-16 h-16 bg-white text-[#001F3F] rounded-2xl flex items-center justify-center mb-8">
+                    <i class="fa-solid fa-server text-3xl"></i>
+                </div>
+                <h3 class="text-3xl font-bold mb-6">Data Management & Server Solutions</h3>
+                <p class="leading-relaxed text-white/90">
+                    We deliver reliable, secure, and scalable data management and server solutions tailored to modern business needs. 
+                    Our services ensure seamless data handling, efficient storage, and high-performance infrastructure.
+                </p>
+            </div>
+            </a>
+
+            <!-- Structured Networking Solutions -->
+            <a href="networking.html" class="block">
+            <div class="service-card bg-white text-gray-900 p-10 rounded-3xl cursor-pointer">
+                <div class="w-16 h-16 bg-[#001F3F] text-white rounded-2xl flex items-center justify-center mb-8">
+                    <i class="fa-solid fa-network-wired text-3xl"></i>
+                </div>
+                <h3 class="text-3xl font-bold mb-6">Structured Networking Solutions</h3>
+                <p class="leading-relaxed">
+                    We design and implement robust structured networking systems that ensure reliable communication, 
+                    high performance, and scalable infrastructure for your organization.
+                </p>
+            </div>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+
+   <!-- FINAL CTA -->
+<div class="bg-[#001F3F] py-16 text-white">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+        
+        <div class="text-4xl font-bold mb-6">
+            Secure Your Space with Smart Technology
+        </div>
+
+        <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-10">
+            Get advanced CCTV surveillance, gate automation, and security systems 
+            tailored to your needs. Let us help you build a safer and smarter environment.
+        </p>
+
+        <a href="#" 
+           class="inline-flex items-center gap-4 bg-white text-[#001F3F] px-12 py-6 rounded-3xl text-2xl font-semibold hover:bg-gray-100 transition">
+            Get in touch
+            <i class="fa-solid fa-arrow-right text-xl"></i>
+        </a>
+
+    </div>
+</div>
+
+  <!-- FOOTER -->
+<footer id="contact" class="bg-zinc-900 text-white py-16">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row md:justify-between md:items-start gap-12 text-center md:text-left">
+
+    <!-- Logo Section -->
+   <div class="flex-1">
+      <div class="flex items-center justify-center md:justify-start gap-3 mb-4">
+        <img src="logo.png"
+             alt="Akshar Elec Logo" 
+             class="h-14 w-auto bg-white p-1 rounded-lg">
+        <span class="text-3xl font-bold">Akshar Elektrotekniks</span>
+      </div>
+      <p class="text-gray-400 text-sm">
+        Innovative solutions for smart homes and intelligent automation systems.
+      </p>
+    </div>
+
+    <!-- Address Section -->
+    <div class="flex-1">
+      <div class="uppercase text-xs tracking-widest mb-4 text-gray-500">Our Address</div>
+      <p class="text-sm text-gray-400 space-y-2">
+        Akshar Elektrotekniks<br>
+        501, Maruti Enclave, Beside Live Bakery,<br>
+        Near Indira Circle, Rajkot<br>
+        PIN - 360005
+      </p>
+    </div>
+
+    <!-- Support Section -->
+    <div class="flex-1">
+      <div class="uppercase text-xs tracking-widest mb-4 text-gray-500">Support</div>
+      <ul class="space-y-3 text-sm">
+        <li><a href="#" class="hover:text-gray-300">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- Social Icons Section -->
+    <div class="flex-1 flex flex-col items-start">
+      <div class="uppercase text-xs tracking-widest mb-4 text-gray-500">Connect</div>
+      
+      <!-- Social Icons -->
+      <div class="flex gap-6 text-2xl mb-4">
+        <a href="https://www.facebook.com/yourusername" target="_blank" class="hover:text-blue-400">
+          <i class="fa-brands fa-facebook cursor-pointer"></i>
+        </a>
+        <a href="https://www.instagram.com/aksharelektrotekniks?igsh=cXp1Z3l2b3Exbjls" target="_blank" class="hover:text-pink-400">
+          <i class="fa-brands fa-instagram cursor-pointer"></i>
+        </a>
+      </div>
+
+      <!-- Copyright -->
+      <div class="text-xs text-gray-400 mt-auto">
+        © 2026 Akshar Elektrotekniks IOT Unlimited. All rights reserved.
+      </div>
+    </div>
+
+  </div>
+</footer>
+    <script>
+        // Tailwind script already loaded via CDN
+        console.log('%c✅ YourBrand Home Automation Landing Page Ready! (Orange replaced with Navy Blue)', 'color:#001F3F; font-weight:bold');
+        
+        // Simple mobile menu toggle (for future enhancement)
+        // You can add a hamburger button if needed
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const sections = document.querySelectorAll("section, footer");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    window.addEventListener("scroll", () => {
+        let current = "";
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 150;
+
+            if (window.scrollY >= sectionTop) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        // 🔥 FIX: Force contact highlight at bottom
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
+            current = "contact";
+        }
+
+        navLinks.forEach(link => {
+            link.classList.remove("text-[#001F3F]", "font-bold");
+
+            if (link.getAttribute("href") === "#" + current) {
+                link.classList.add("text-[#001F3F]", "font-bold");
+            }
+        });
+    });
+
+});
+
+
+
+</script>
+</body>
+</html>
