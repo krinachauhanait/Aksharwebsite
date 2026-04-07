@@ -223,7 +223,7 @@ document.querySelector("form").addEventListener("submit", async function(e) {
     };
 
     try {
-        const res = await fetch("/send-quotation", {
+        const res = await fetchfetch("https://akshar-backend-xqc2.onrender.com/send-quotation", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
