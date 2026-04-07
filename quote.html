@@ -53,7 +53,7 @@
     <div class="bg-white shadow-2xl rounded-3xl p-10">
 
         <!-- IMPORTANT: connected to backend -->
-        <form id="quoteForm">
+        <form>
 
             <!-- Name -->
             <div>
@@ -208,8 +208,7 @@
   </div>
 </footer>
 <script>
-// quote.html <script> — full updated version
-document.getElementById("quoteForm").addEventListener("submit", async function(e) {
+document.querySelector("form").addEventListener("submit", async function(e) {
     e.preventDefault();
 
     const formData = new FormData(this);
@@ -224,24 +223,24 @@ document.getElementById("quoteForm").addEventListener("submit", async function(e
     };
 
     try {
-        const res = await fetch("/send-quotation", {          // ✅ CHANGED: removed localhost
+        const res = await fetch("/send-quotation", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify(data)
         });
 
-        const result = await res.json();                      // ✅ CHANGED: parse as JSON
-
-        if (result.success) {
+        if (res.ok) {
             alert("✅ Quotation submitted successfully!");
-            document.getElementById("quoteForm").reset();
+            this.reset();
         } else {
-            alert("❌ Failed to send. Please try again.");
+            alert("❌ Failed to send email");
         }
 
     } catch (error) {
         console.error(error);
-        alert("❌ Failed to send email");
+        alert("❌ Server error");
     }
 });
 </script>
