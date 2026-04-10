@@ -233,7 +233,7 @@
   </div>
 </footer>
 <script>
-document.querySelector("form").addEventListener("submit", async function(e) {
+document.querySelector("#quoteForm").addEventListener("submit", async function(e) {
     e.preventDefault();
 
     const formData = new FormData(this);
@@ -247,6 +247,8 @@ document.querySelector("form").addEventListener("submit", async function(e) {
         message: formData.get("message")
     };
 
+    console.log("Sending data:", data); // DEBUG
+
     try {
         const res = await fetch("https://akshar-backend-xqc2.onrender.com/send-quotation", {
             method: "POST",
@@ -256,16 +258,20 @@ document.querySelector("form").addEventListener("submit", async function(e) {
             body: JSON.stringify(data)
         });
 
+        const result = await res.text(); // get backend response
+
+        console.log("Response:", result); // DEBUG
+
         if (res.ok) {
             alert("✅ Quotation submitted successfully!");
             this.reset();
         } else {
-            alert("❌ Failed to send email");
+            alert("❌ Error: " + result);
         }
 
     } catch (error) {
-        console.error(error);
-        alert("❌ Server error");
+        console.error("Fetch Error:", error);
+        alert("❌ Network/Server error: " + error.message);
     }
 });
 </script>
