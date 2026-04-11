@@ -52,7 +52,7 @@
 
   <div class="bg-white shadow-2xl rounded-3xl p-10">
 
-    <form onsubmit="submitForm(event)">
+    <form id="quoteForm">
 
       <div class="grid md:grid-cols-2 gap-6">
 
@@ -233,48 +233,61 @@
   </div>
 </footer>
 <script>
-document.querySelector("#quoteForm").addEventListener("submit", async function(e) {
+document.addEventListener("DOMContentLoaded", function () {
+
+  console.log("SCRIPT LOADED");
+
+  const form = document.getElementById("quoteForm");
+
+  if (!form) {
+    console.error("Form not found!");
+    return;
+  }
+
+  form.addEventListener("submit", async function(e) {
     e.preventDefault();
 
-    const btn = document.querySelector("button[type='submit']");
-    btn.innerText = "Sending...";
-    btn.disabled = true;
+    console.log("FORM SUBMITTED");
 
-    const formData = new FormData(this);
+    const formData = new FormData(form);
 
-    const data = {
-        name: formData.get("name"),
-        phone: formData.get("phone"),
-        email: formData.get("email"),
-        location: formData.get("location"),
-        services: formData.getAll("services[]"),
-        message: formData.get("message")
-    };
+const data = {
+  name: formData.get("name"),
+  email: formData.get("email"),
+  phone: formData.get("phone"),
+  location: formData.get("location"),
+  services: formData.getAll("services[]"),
+  message: formData.get("message")
+};
 
     try {
-        const res = await fetch("/api/send-email", {   // ✅ CHANGED HERE
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        });
+      console.log("CALLING API...");
 
-        const result = await res.json();
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
 
-        if (res.ok) {
-            alert("✅ Quotation submitted successfully!");
-            this.reset();
-        } else {
-            alert("❌ Error: " + result.message);
-        }
+      const result = await res.json();
 
-    } catch (error) {
-        alert("❌ Network error: " + error.message);
+      console.log("RESPONSE:", result);
+
+      if (res.ok) {
+        alert("✅ Email sent successfully!");
+        form.reset();
+      } else {
+        alert("❌ Error: " + result.error);
+      }
+
+    } catch (err) {
+      console.error("ERROR:", err);
+      alert("❌ Failed to send request");
     }
+  });
 
-    btn.innerText = "Submit Request →";
-    btn.disabled = false;
 });
 </script>
 
