@@ -1,13 +1,17 @@
-import nodemailer from "nodemailer";
+const nodemailer = require("nodemailer");
 
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
   if (req.method !== "POST") {
     return res.status(405).send("Method Not Allowed");
   }
 
-  const { name, email, phone, message } = req.body;
-
   try {
+    const { name, email, phone, location, services, message } = req.body;
+
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      return res.status(500).json({ error: "Missing email credentials" });
+    }
+
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -21,18 +25,20 @@ export default async function handler(req, res) {
       to: "krinachauhan22@gmail.com",
       subject: "New Quote Request",
       html: `
-        <h3>New Form Submission</h3>
-        <p>Name: ${name}</p>
-        <p>Email: ${email}</p>
-        <p>Phone: ${phone}</p>
-        <p>Message: ${message}</p>
+        <h3>New Submission</h3>
+        <p><b>Name:</b> ${name}</p>
+        <p><b>Email:</b> ${email}</p>
+        <p><b>Phone:</b> ${phone}</p>
+        <p><b>Location:</b> ${location}</p>
+        <p><b>Services:</b> ${services}</p>
+        <p><b>Message:</b> ${message}</p>
       `,
     });
 
-    res.status(200).json({ message: "Email sent" });
+    return res.status(200).json({ message: "Email sent successfully" });
 
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Error sending email" });
+    console.error("ERROR:", error);
+    return res.status(500).json({ error: error.message });
   }
-}
+};
