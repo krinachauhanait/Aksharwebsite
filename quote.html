@@ -52,7 +52,7 @@
 
   <div class="bg-white shadow-2xl rounded-3xl p-10">
 
-    <form id="quoteForm" action="/send-quotation" method = "POST">
+    <form onsubmit="submitForm(event)">
 
       <div class="grid md:grid-cols-2 gap-6">
 
@@ -233,28 +233,12 @@
   </div>
 </footer>
 <script>
-const BACKEND_URL = "https://akshar-backend-xqc2.onrender.com";
-
-async function wakeServer() {
-    try {
-        await fetch(BACKEND_URL);
-        console.log("🔥 Server awake");
-    } catch (e) {
-        console.log("Wake attempt done");
-    }
-}
-
 document.querySelector("#quoteForm").addEventListener("submit", async function(e) {
     e.preventDefault();
 
     const btn = document.querySelector("button[type='submit']");
-    btn.innerText = "Waking server...";
-    btn.disabled = true;
-
-    // 🔥 Wake server first
-    await wakeServer();
-
     btn.innerText = "Sending...";
+    btn.disabled = true;
 
     const formData = new FormData(this);
 
@@ -268,7 +252,7 @@ document.querySelector("#quoteForm").addEventListener("submit", async function(e
     };
 
     try {
-        const res = await fetch(BACKEND_URL + "/send-quotation", {
+        const res = await fetch("/api/send-email", {   // ✅ CHANGED HERE
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -276,13 +260,13 @@ document.querySelector("#quoteForm").addEventListener("submit", async function(e
             body: JSON.stringify(data)
         });
 
-        const result = await res.text();
+        const result = await res.json();
 
         if (res.ok) {
             alert("✅ Quotation submitted successfully!");
             this.reset();
         } else {
-            alert("❌ Error: " + result);
+            alert("❌ Error: " + result.message);
         }
 
     } catch (error) {
