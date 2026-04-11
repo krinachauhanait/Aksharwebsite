@@ -33,6 +33,7 @@ module.exports = async (req, res) => {
     await transporter.sendMail({
       from: `"Akshar Website" <${process.env.EMAIL_USER}>`,
       to: "krinachauhan22@gmail.com",
+      replyTo: email,
       subject: "New Quote Request",
       html: `
         <h2>📩 New Quotation Request</h2>
