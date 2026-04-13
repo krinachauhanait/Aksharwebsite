@@ -31,7 +31,7 @@ module.exports = async (req, res) => {
 
     // Send Email
     await transporter.sendMail({
-      from: `"Akshar Website" <krinachauhan22@gmail.com}>`,
+      from: `"Akshar Website" <krinachauhan22@gmail.com>`,
       to: "krinachauhan.ait@gmail.com",
       replyTo: email,
       subject: "New Quote Request",
